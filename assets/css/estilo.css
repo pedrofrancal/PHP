@@ -1,0 +1,164 @@
+* {
+    font-family: 'Oswald', 'sans-serif';
+    box-sizing: border-box;
+}
+
+body {
+    /*  DIVIDINDO EM 100 PARTES O BODY DO HTML */
+    height: 100vh;
+    margin: 0px;
+    /*  LAYOUT UTILIZANDO CSS GRID 
+        DEFINE-SE LINHA E COLUNA NO GRID
+    */
+    display: grid;
+    /*
+    3 LINHAS: CABEÇALHO, CONTEUDO E RODAPÉ
+    CONTEUDO CRESCENDO COM A NECESSIDADE
+
+    120px PARA O CABEÇALHO
+    1fr PARA O CONTEUDO
+    60px PARA O RODAPÉ
+    */
+    grid-template-rows: 120px 1fr 60px;
+    /*
+    FRAGMENTO É RELATIVO
+    SUPONHA QUE ESTIVESSE 1fr 2fr
+    O PRIMEIRO USARIA 1/3 DO ESPAÇO
+    O SEGUNDO 2/3
+
+    COMO TEM 2 PARTES EM PIXEL, ELE USA O ESPAÇO QUE SOBRA
+    */
+    grid-template-columns: 1fr;
+    grid-template-areas: "cabecalho" "principal" "rodape";
+}
+
+
+/* NÃO É A CLASSE CSS, É O NOME DA PROPRIEDADE*/
+
+.cabecalho {
+    grid-area: cabecalho;
+    background-color: blue;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    /*  SEM SUBIR O Z NÃO APARECE O BOX-SHADOW */
+    z-index: 1;
+    box-shadow: -5px -2px 14px -2px rgba(0, 0, 0, 1);
+}
+
+.cabecalho>h1 {
+    margin: 0px;
+    font-weight: 300;
+    font-size: 2.8rem;
+}
+
+.cabecalho>h2 {
+    margin: 0px;
+    font-weight: 200;
+    font-size: 1.6rem;
+}
+
+.principal {
+    grid-area: principal;
+    /*  OCUPAR 100% DA AREA MENOS O CABECALHO E O RODAPE (120+60) */
+    height: calc(100vh - 180px);
+    background-color: whitesmoke;
+    padding: 20px;
+}
+
+.conteudo {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: white;
+    box-shadow: -5px -2px 14px -2px rgba(0, 0, 0, 1);
+    padding: 20px;
+}
+
+.rodape {
+    grid-area: rodape;
+    background-color: whitesmoke;
+    /*  FLEXIBILIZA O LOCAL A SER MOSTRADO, PODENDO POSICIONAR ELE DE ACORDO COM ELEMENTOS */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 0.9rem;
+    /*  PRIMEIRO VERTICAL DEPOIS HORIZONTAL */
+    padding: 0px 20px;
+    position: sticky;
+    bottom: 0px;
+}
+
+.modulos {
+    display: flex;
+    /*  CASO TENHA MUITOS ITENS NO CONTAINER, QUEBRAR A LINHA*/
+    flex-wrap: wrap-wrap;
+    justify-content: space-around;
+}
+
+.modulo {
+    /*  LARGURA ESPECIFICA PARA O FLEX BOX */
+    flex-basis: 33%;
+    margin-bottom: 20px;
+    /*  CURVAR A BORDA UM POUCO */
+    border-radius: 5px;
+}
+
+.modulo>h3 {
+    margin: 0px;
+    color: white;
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    background-color: blue;
+}
+
+.modulo>ul {
+    margin: 0px;
+    padding: 10px;
+    /*  TIRAR A BOLINHA DA LISTA */
+    list-style: none;
+}
+
+.modulo>ul>li {
+    padding: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.modulo>ul>li>a {
+    display: flex;
+    text-decoration: none;
+    color: grey;
+}
+
+.modulo>ul>li:hover {
+    background-color: lightgray;
+}
+
+.modulo.verde {
+    border: 2px solid green;
+}
+
+.modulo.verde>h3 {
+    background-color: green;
+}
+
+.modulo.azul {
+    border: 2px solid blue;
+}
+
+.modulo.azul>h3 {
+    background-color: blue;
+}
+
+.modulo.vermelho {
+    border: 2px solid red;
+}
+
+.modulo.vermelho>h3 {
+    background-color: red;
+}
